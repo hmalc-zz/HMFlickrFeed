@@ -13,6 +13,7 @@ enum FlickrAPIError: Error {
     case urlSessionError(error: Error)
     case responseHandlingError(msg: String)
     case decodingError(error: Error)
+    case invalidMockFile
 }
 
 class FlickrAPIService {

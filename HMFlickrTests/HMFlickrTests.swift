@@ -11,26 +11,48 @@ import XCTest
 
 class HMFlickrTests: XCTestCase {
     
+    var data: Data?
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        do {
+            if let file = Bundle.main.url(forResource: "ExampleOutput", withExtension: "json") {
+                let data = try Data(contentsOf: file)
+                self.data = data
+            } else {
+                throw FlickrAPIError.invalidMockFile
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        self.data = nil
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testJSONDecode(){
+        let jsonDecoder = JSONDecoder()
+        do {
+            let _ = try jsonDecoder.decode(FlickrPublicFeed.self,from: self.data!)
+            XCTAssert(true)
+        } catch let error {
+            XCTAssert(false, error.localizedDescription)
         }
     }
+    
+    func testUserDecodedName(){
+        let jsonDecoder = JSONDecoder()
+        do {
+            let feed = try jsonDecoder.decode(FlickrPublicFeed.self,from: self.data!)
+            XCTAssertEqual(feed.items!.first!.extractedAuthorUserName!, "Tomashenski")
+        } catch let error {
+            XCTAssert(false, error.localizedDescription)
+        }
+    }
+    
+
     
 }

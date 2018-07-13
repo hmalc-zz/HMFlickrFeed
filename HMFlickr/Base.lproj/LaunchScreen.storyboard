@@ -17,7 +17,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifierIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hsf-DA-G56">
+                                <rect key="frame" x="137" y="283.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="ByB-Xv-d1G"/>
+                                    <constraint firstAttribute="height" constant="100" id="GSH-zc-gQN"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hsf-DA-G56" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2eg-07-FCB"/>
+                            <constraint firstItem="hsf-DA-G56" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bK7-eH-SiV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -26,4 +39,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifierIcon" width="758" height="759"/>
+    </resources>
 </document>

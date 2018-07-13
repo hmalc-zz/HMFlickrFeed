@@ -66,7 +66,6 @@ extension FlickrImage {
     
     var extractedAuthorUserName: String? {
         let authorComponents = self.author.components(separatedBy: "\"")
-        print(authorComponents)
         return authorComponents.dropLast().last
     }
     

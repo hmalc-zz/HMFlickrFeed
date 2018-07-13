@@ -16,6 +16,12 @@ class TagCell: UICollectionViewCell {
         // Initialization code
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 4
+    }
+    
     func configureWith(text: String){
         tagLabel.text = "#" + text
     }

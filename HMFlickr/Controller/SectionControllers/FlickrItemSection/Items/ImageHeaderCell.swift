@@ -11,6 +11,8 @@ import UIKit
 class ImageHeaderCell: UICollectionViewCell {
 
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var colloquialDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +20,9 @@ class ImageHeaderCell: UICollectionViewCell {
     }
     
     func configureWith(flickrImage: FlickrImage){
-        self.authorLabel.text = flickrImage.author
+        self.authorLabel.text = flickrImage.extractedAuthorUserName
+        self.titleLabel.text = flickrImage.title
+        self.colloquialDateLabel.text = flickrImage.published.timeStringRelativeToNow()
     }
 
 }

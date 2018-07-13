@@ -22,13 +22,15 @@ final class SearchViewController: UIViewController {
     }
     
     lazy var adapter: ListAdapter = {
-        return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
+        return ListAdapter(updater: ListAdapterUpdater(), viewController: self, workingRangeSize: 3)
     }()
+    
+    var refresher: UIRefreshControl!
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     var feed: FlickrPublicFeed?
-    var filterString = ""
+    var searchTerm = ""
     let searchToken: NSNumber = 42
     var availableFeedObjects: [FlickrImageObject] = []
     
@@ -37,7 +39,7 @@ final class SearchViewController: UIViewController {
             guard let tagArray = object.flickrImage.tagArray else { return false }
             var searchFieldFound = false
             tagArray.forEach({ (tag) in
-                if tag.lowercased().contains(filterString.lowercased()) { searchFieldFound = true }
+                if tag.lowercased().contains(searchTerm.lowercased()) { searchFieldFound = true }
             })
             return searchFieldFound
         })
@@ -45,19 +47,38 @@ final class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
-        adapter.collectionView = collectionView
-        adapter.dataSource = self
+        configureCollectionView()
+        configureRefresh()
+        fetchData()
+    }
+    
+    @objc func fetchData(){
         FlickrAPIService.getFlickrPublicFeed { [unowned self] (feed, error) in
             DispatchQueue.main.async {
                 self.feed = feed
+                self.refresher.endRefreshing()
                 guard let feedToAssign = feed, let flickrImageItems = feedToAssign.items else { return }
-                self.availableFeedObjects = flickrImageItems.map({ (flickrImage) -> FlickrImageObject in
+                self.availableFeedObjects = flickrImageItems.sorted(by: { (image1, image2) -> Bool in
+                    return image1.published > image2.published
+                }).map({ (flickrImage) -> FlickrImageObject in
                     return FlickrImageObject(controllerClass: SearchViewController.self, flickrImage: flickrImage)
                 })
                 self.adapter.reloadData(completion: nil)
             }
         }
+    }
+    
+    func configureCollectionView(){
+        view.addSubview(collectionView)
+        adapter.collectionView = collectionView
+        adapter.dataSource = self
+    }
+    
+    func configureRefresh(){
+        self.refresher = UIRefreshControl()
+        refresher.tintColor = UIColor.black
+        refresher.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+        collectionView.addSubview(refresher)
     }
 
     override func viewDidLayoutSubviews() {
@@ -71,7 +92,7 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: ListAdapterDataSource {
     
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        let objectsToShow = (filterString == "") ? availableFeedObjects : filteredFeedObjects
+        let objectsToShow = (searchTerm == "") ? availableFeedObjects : filteredFeedObjects
         print(objectsToShow)
         return [searchToken] + objectsToShow
     }
@@ -99,7 +120,7 @@ extension SearchViewController: ListAdapterDataSource {
 extension SearchViewController: SearchSectionControllerDelegate {
     
     func searchSectionController(_ sectionController: SearchSectionController, didChangeText text: String) {
-        filterString = text
+        searchTerm = text
         adapter.performUpdates(animated: true, completion: nil)
     }
 }

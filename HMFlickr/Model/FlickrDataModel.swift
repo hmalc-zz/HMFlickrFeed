@@ -64,6 +64,12 @@ struct FlickrImage: Codable {
 
 extension FlickrImage {
     
+    var extractedAuthorUserName: String? {
+        let authorComponents = self.author.components(separatedBy: "\"")
+        print(authorComponents)
+        return authorComponents.dropLast().last
+    }
+    
     var tagArray: [String]? {
         if self.tags.isEmpty { return nil }
         let tagArray = tags.components(separatedBy: " ")
@@ -74,13 +80,12 @@ extension FlickrImage {
     func constructFlickrItemSectionDataSource() -> [FlickrItemSectionItem] {
         var dataSource: [FlickrItemSectionItem] = []
         dataSource.append(.header(flickrItem: self))
-        dataSource.append(FlickrItemSectionItem.image(image: URL(string: self.media.imageUrlString)))
         if let tags = self.tagArray {
             dataSource.append(FlickrItemSectionItem.tags(tagsArray: tags))
         }
+        dataSource.append(FlickrItemSectionItem.image(image: URL(string: self.media.imageUrlString)))
         return dataSource
     }
-    
 }
 
 struct FlickrImageMedia: Codable {

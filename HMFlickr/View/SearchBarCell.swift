@@ -12,6 +12,8 @@ final class SearchBarCell: UICollectionViewCell {
 
     lazy var searchBar: UISearchBar = {
         let view = UISearchBar()
+        view.searchBarStyle = .minimal
+        view.placeholder = "Search by photo tag"
         self.contentView.addSubview(view)
         return view
     }()
@@ -19,6 +21,7 @@ final class SearchBarCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         searchBar.frame = contentView.bounds
+        
     }
 
 }

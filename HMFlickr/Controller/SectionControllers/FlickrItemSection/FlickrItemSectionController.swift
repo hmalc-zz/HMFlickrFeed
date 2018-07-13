@@ -9,6 +9,8 @@
 import Foundation
 import IGListKit
 
+public let IMAGE_ASPECT_RATIO: CGFloat = 0.8
+
 enum FlickrItemSectionItem {
     case header(flickrItem: FlickrImage)
     case image(image: URL?)
@@ -32,10 +34,12 @@ final class FlickrItemSectionController: ListSectionController, UISearchBarDeleg
     
     override func sizeForItem(at index: Int) -> CGSize {
         switch flickrItemSectionDataSource[index] {
-        case .header,.tags:
-            return CGSize(width: collectionContext!.containerSize.width, height: 44)
+        case .header:
+            return CGSize(width: collectionContext!.containerSize.width, height: 80)
+        case .tags:
+            return CGSize(width: collectionContext!.containerSize.width, height: 40)
         case .image:
-            return CGSize(width: collectionContext!.containerSize.width, height: collectionContext!.containerSize.width * 0.8)
+            return CGSize(width: collectionContext!.containerSize.width, height: collectionContext!.containerSize.width * IMAGE_ASPECT_RATIO)
         }
     }
     
@@ -52,9 +56,7 @@ final class FlickrItemSectionController: ListSectionController, UISearchBarDeleg
             cell.configureWith(flickrImage: flickrImage)
             return cell
         case .tags(let tagArray):
-            guard let cell = collectionContext?.dequeueReusableCell(of: TagsCollectionViewCell.self, for: self, at: index) as? TagsCollectionViewCell else {
-                fatalError()
-            }
+            let cell = collectionContext!.dequeueReusableCell(withNibName: "TagsCollectionViewCell", bundle: nil, for: self, at: index) as! TagsCollectionViewCell
             cell.configureWith(tags: tagArray)
             return cell
         }
@@ -63,12 +65,7 @@ final class FlickrItemSectionController: ListSectionController, UISearchBarDeleg
     
     // MARK: ListScrollDelegate
     
-    func listAdapter(_ listAdapter: ListAdapter, didScroll sectionController: ListSectionController) {
-        if let searchBar = (collectionContext?.cellForItem(at: 0, sectionController: self) as? SearchBarCell)?.searchBar {
-            searchBar.resignFirstResponder()
-        }
-    }
-    
+    func listAdapter(_ listAdapter: ListAdapter, didScroll sectionController: ListSectionController) {}
     func listAdapter(_ listAdapter: ListAdapter, willBeginDragging sectionController: ListSectionController) {}
     func listAdapter(_ listAdapter: ListAdapter,
                      didEndDragging sectionController: ListSectionController,

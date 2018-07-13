@@ -18,10 +18,12 @@
 		B4E3DB8C20F8639E00983FE4 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB8B20F8639E00983FE4 /* ImageCell.swift */; };
 		B4E3DB8F20F8657D00983FE4 /* ImageHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB8D20F8657D00983FE4 /* ImageHeaderCell.swift */; };
 		B4E3DB9020F8657D00983FE4 /* ImageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E3DB8E20F8657D00983FE4 /* ImageHeaderCell.xib */; };
-		B4E3DB9220F866BE00983FE4 /* TagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9120F866BE00983FE4 /* TagsCollectionViewCell.swift */; };
 		B4E3DB9520F8676700983FE4 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9320F8676700983FE4 /* TagCell.swift */; };
 		B4E3DB9620F8676700983FE4 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E3DB9420F8676700983FE4 /* TagCell.xib */; };
 		B4E3DB9920F868C100983FE4 /* StringTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9820F868C100983FE4 /* StringTools.swift */; };
+		B4E3DB9B20F873D200983FE4 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9A20F873D200983FE4 /* FoundationExtensions.swift */; };
+		B4E3DB9E20F8768A00983FE4 /* TagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9C20F8768A00983FE4 /* TagsCollectionViewCell.swift */; };
+		B4E3DB9F20F8768A00983FE4 /* TagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E3DB9D20F8768A00983FE4 /* TagsCollectionViewCell.xib */; };
 		B4E61B8E20F81DFA0093ED3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E61B8D20F81DFA0093ED3F /* AppDelegate.swift */; };
 		B4E61B9520F81DFC0093ED3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4E61B9420F81DFC0093ED3F /* Assets.xcassets */; };
 		B4E61B9820F81DFC0093ED3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4E61B9620F81DFC0093ED3F /* LaunchScreen.storyboard */; };
@@ -64,10 +66,12 @@
 		B4E3DB8B20F8639E00983FE4 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		B4E3DB8D20F8657D00983FE4 /* ImageHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHeaderCell.swift; sourceTree = "<group>"; };
 		B4E3DB8E20F8657D00983FE4 /* ImageHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageHeaderCell.xib; sourceTree = "<group>"; };
-		B4E3DB9120F866BE00983FE4 /* TagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4E3DB9320F8676700983FE4 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		B4E3DB9420F8676700983FE4 /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
 		B4E3DB9820F868C100983FE4 /* StringTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTools.swift; sourceTree = "<group>"; };
+		B4E3DB9A20F873D200983FE4 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
+		B4E3DB9C20F8768A00983FE4 /* TagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B4E3DB9D20F8768A00983FE4 /* TagsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B4E61B8A20F81DFA0093ED3F /* HMFlickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HMFlickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E61B8D20F81DFA0093ED3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4E61B9420F81DFC0093ED3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,9 +158,10 @@
 				B4E3DB8B20F8639E00983FE4 /* ImageCell.swift */,
 				B4E3DB8D20F8657D00983FE4 /* ImageHeaderCell.swift */,
 				B4E3DB8E20F8657D00983FE4 /* ImageHeaderCell.xib */,
-				B4E3DB9120F866BE00983FE4 /* TagsCollectionViewCell.swift */,
 				B4E3DB9320F8676700983FE4 /* TagCell.swift */,
 				B4E3DB9420F8676700983FE4 /* TagCell.xib */,
+				B4E3DB9C20F8768A00983FE4 /* TagsCollectionViewCell.swift */,
+				B4E3DB9D20F8768A00983FE4 /* TagsCollectionViewCell.xib */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				B4E3DB9820F868C100983FE4 /* StringTools.swift */,
+				B4E3DB9A20F873D200983FE4 /* FoundationExtensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4E3DB9620F8676700983FE4 /* TagCell.xib in Resources */,
+				B4E3DB9F20F8768A00983FE4 /* TagsCollectionViewCell.xib in Resources */,
 				B4E3DB9020F8657D00983FE4 /* ImageHeaderCell.xib in Resources */,
 				B4E61B9820F81DFC0093ED3F /* LaunchScreen.storyboard in Resources */,
 				B4E61B9520F81DFC0093ED3F /* Assets.xcassets in Resources */,
@@ -472,14 +479,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4E3DB7F20F84DAF00983FE4 /* SearchSectionController.swift in Sources */,
+				B4E3DB9B20F873D200983FE4 /* FoundationExtensions.swift in Sources */,
 				B4E3DB7920F84BFA00983FE4 /* SearchViewController.swift in Sources */,
 				B4E3DB8C20F8639E00983FE4 /* ImageCell.swift in Sources */,
 				B4E3DB7D20F84D4F00983FE4 /* SearchBarCell.swift in Sources */,
-				B4E3DB9220F866BE00983FE4 /* TagsCollectionViewCell.swift in Sources */,
 				B4E3DB8F20F8657D00983FE4 /* ImageHeaderCell.swift in Sources */,
 				B4E61BBD20F81FA20093ED3F /* FlickrDataModel.swift in Sources */,
 				B4E3DB9520F8676700983FE4 /* TagCell.swift in Sources */,
 				B4E3DB8420F852FC00983FE4 /* FlickrItemSectionController.swift in Sources */,
+				B4E3DB9E20F8768A00983FE4 /* TagsCollectionViewCell.swift in Sources */,
 				B4E3DB9920F868C100983FE4 /* StringTools.swift in Sources */,
 				B4E61B8E20F81DFA0093ED3F /* AppDelegate.swift in Sources */,
 				B4E61BBF20F8205A0093ED3F /* FlickrAPIService.swift in Sources */,

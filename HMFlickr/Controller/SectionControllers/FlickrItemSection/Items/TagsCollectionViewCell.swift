@@ -10,34 +10,18 @@ import UIKit
 
 class TagsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var specialisationCollectionView: UICollectionView!
+    
     var tags: [String] = []
-    
-    private let cellId = "tagsCell"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    let specialisationCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return collectionView
-    }()
-    
-    func setupViews() {
-        addSubview(specialisationCollectionView)
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
         let specialisationCell = UINib(nibName: "TagCell", bundle: nil)
         specialisationCollectionView.register(specialisationCell, forCellWithReuseIdentifier: "TagCell")
         specialisationCollectionView.delegate = self
         specialisationCollectionView.dataSource = self
-        specialisationCollectionView.register(TagCell.self, forCellWithReuseIdentifier: cellId)
-        specialisationCollectionView.contentInset.left = 8
-        specialisationCollectionView.contentInset.right = 8
+        specialisationCollectionView.contentInset.left = 4
+        specialisationCollectionView.contentInset.right = 4
     }
     
     func configureWith(tags: [String]){

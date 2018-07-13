@@ -22,11 +22,11 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7i-uo-1bb">
                         <rect key="frame" x="0.0" y="0.0" width="142" height="50"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="x7i-uo-1bb" secondAttribute="trailing" id="06i-fw-r5N"/>
                 <constraint firstAttribute="bottom" secondItem="x7i-uo-1bb" secondAttribute="bottom" id="Smw-8f-yy6"/>
@@ -35,6 +35,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="142" height="50"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="tagLabel" destination="x7i-uo-1bb" id="rAk-U6-CvK"/>
             </connections>

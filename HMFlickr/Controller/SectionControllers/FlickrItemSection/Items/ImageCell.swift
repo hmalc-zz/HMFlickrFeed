@@ -49,7 +49,9 @@ final class ImageCell: UICollectionViewCell {
     }
 
     func setImage(url: URL?) {
-        imageView.kf.setImage(with: url)
+        imageView.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.fade(0.2))], progressBlock: nil) { [weak self] (_, _, _, _) in
+            self?.activityView.stopAnimating()
+        }
     }
 
 }

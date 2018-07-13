@@ -24,7 +24,6 @@ class FlickrAPIService {
     static let flickrTimeFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
     
     static func getFlickrPublicFeed(completion: @escaping FlickrResponse) -> Void {
-        //let escapedSearchText: String = searchText.addingPercentEncoding(withAllowedCharacters:.urlHostAllowed)!
         guard let url = URL(string: baseURL) else {
             completion(nil, FlickrAPIError.invalidInputsError(msg: "Could not initialise `\(baseURL)` as valid URL object"))
             return

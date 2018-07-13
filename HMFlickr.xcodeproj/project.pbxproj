@@ -20,7 +20,6 @@
 		B4E3DB9020F8657D00983FE4 /* ImageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E3DB8E20F8657D00983FE4 /* ImageHeaderCell.xib */; };
 		B4E3DB9520F8676700983FE4 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9320F8676700983FE4 /* TagCell.swift */; };
 		B4E3DB9620F8676700983FE4 /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E3DB9420F8676700983FE4 /* TagCell.xib */; };
-		B4E3DB9920F868C100983FE4 /* StringTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9820F868C100983FE4 /* StringTools.swift */; };
 		B4E3DB9B20F873D200983FE4 /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9A20F873D200983FE4 /* FoundationExtensions.swift */; };
 		B4E3DB9E20F8768A00983FE4 /* TagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E3DB9C20F8768A00983FE4 /* TagsCollectionViewCell.swift */; };
 		B4E3DB9F20F8768A00983FE4 /* TagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4E3DB9D20F8768A00983FE4 /* TagsCollectionViewCell.xib */; };
@@ -68,7 +67,6 @@
 		B4E3DB8E20F8657D00983FE4 /* ImageHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageHeaderCell.xib; sourceTree = "<group>"; };
 		B4E3DB9320F8676700983FE4 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		B4E3DB9420F8676700983FE4 /* TagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
-		B4E3DB9820F868C100983FE4 /* StringTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTools.swift; sourceTree = "<group>"; };
 		B4E3DB9A20F873D200983FE4 /* FoundationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
 		B4E3DB9C20F8768A00983FE4 /* TagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4E3DB9D20F8768A00983FE4 /* TagsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		B4E3DB9720F868B500983FE4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B4E3DB9820F868C100983FE4 /* StringTools.swift */,
 				B4E3DB9A20F873D200983FE4 /* FoundationExtensions.swift */,
 			);
 			path = Helper;
@@ -480,7 +477,6 @@
 				B4E3DB9520F8676700983FE4 /* TagCell.swift in Sources */,
 				B4E3DB8420F852FC00983FE4 /* FlickrItemSectionController.swift in Sources */,
 				B4E3DB9E20F8768A00983FE4 /* TagsCollectionViewCell.swift in Sources */,
-				B4E3DB9920F868C100983FE4 /* StringTools.swift in Sources */,
 				B4E61B8E20F81DFA0093ED3F /* AppDelegate.swift in Sources */,
 				B4E61BBF20F8205A0093ED3F /* FlickrAPIService.swift in Sources */,
 			);

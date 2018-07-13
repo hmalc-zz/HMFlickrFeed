@@ -47,7 +47,7 @@ extension TagsCollectionViewCell: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let heightDim = specialisationCollectionView.bounds.size.height
-        let widthDim = StringTools.getWidthBoundsForStringOfSize(string: tags[indexPath.row], fontSize: 20, heightDim: heightDim, horizontalPadding: 20).width
+        let widthDim = tags[indexPath.row].getWidthBoundsForStringOfSize(fontSize: 20, heightDim: heightDim, horizontalPadding: 20).width
         return CGSize(width: widthDim, height: heightDim)
     }
     

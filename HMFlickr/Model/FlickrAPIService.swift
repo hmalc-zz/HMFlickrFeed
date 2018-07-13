@@ -12,6 +12,7 @@ enum FlickrAPIError: Error {
     case invalidInputsError(msg: String)
     case urlSessionError(error: Error)
     case responseHandlingError(msg: String)
+    case decodingError(error: Error)
 }
 
 class FlickrAPIService {
@@ -37,9 +38,7 @@ class FlickrAPIService {
                 completion(nil,FlickrAPIError.responseHandlingError(msg: "nil `data` return from request"))
                 return
             }
-            
             do {
-                
                 // Fixing invalid json data from https://www.flickr.com/groups/51035612836@N01/discuss/72157622950514923/
                 guard let invalidJSONString = String(data: data, encoding: .utf8) else {
                     throw(FlickrAPIError.responseHandlingError(msg: "Response could not be encoded with .utf8"))
@@ -56,9 +55,8 @@ class FlickrAPIService {
                 let result = try decoder.decode(FlickrPublicFeed.self, from: correctData)
                 completion(result,error)
             } catch let error {
-                completion(nil, error)
+                completion(nil, FlickrAPIError.decodingError(error: error))
             }
-            
         })
         searchTask.resume()
     }

@@ -12,7 +12,12 @@ jobs:
 
     steps:
       - checkout
-
+       
+     
+      #
+      - run:
+          name: Initialise Podfile
+          command: pod init
       # Install CocoaPods
       - run:
           name: Install CocoaPods

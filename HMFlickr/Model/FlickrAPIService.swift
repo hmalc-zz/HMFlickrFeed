@@ -39,26 +39,32 @@ class FlickrAPIService {
                 return
             }
             do {
+                let correctedData = try fixInvalidDataFrom(data: data)
                 // Fixing invalid json data from https://www.flickr.com/groups/51035612836@N01/discuss/72157622950514923/
-                guard let invalidJSONString = String(data: data, encoding: .utf8) else {
-                    throw(FlickrAPIError.responseHandlingError(msg: "Response could not be encoded with .utf8"))
-                }
-                // Corrected String: replace escaped single quotes \' which are invalid for json format with just single quotes '
-                let correctedJSONFormatString = invalidJSONString.replacingOccurrences(of: "\\'", with: "'")
-                guard let correctData = correctedJSONFormatString.data(using: .utf8) else {
-                    throw(FlickrAPIError.responseHandlingError(msg: "Could not re-encode "))
-                }
                 let decoder = JSONDecoder()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = flickrTimeFormat
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                let result = try decoder.decode(FlickrPublicFeed.self, from: correctData)
+                let result = try decoder.decode(FlickrPublicFeed.self, from: correctedData)
                 completion(result,error)
             } catch let error {
                 completion(nil, FlickrAPIError.decodingError(error: error))
             }
         })
         searchTask.resume()
+    }
+    
+    static func fixInvalidDataFrom(data: Data) throws -> Data {
+        // Fixing invalid json data from https://www.flickr.com/groups/51035612836@N01/discuss/72157622950514923/
+        guard let invalidJSONString = String(data: data, encoding: .utf8) else {
+            throw(FlickrAPIError.responseHandlingError(msg: "Response could not be encoded with .utf8"))
+        }
+        // Corrected String: replace escaped single quotes \' which are invalid for json format with just single quotes '
+        let correctedJSONFormatString = invalidJSONString.replacingOccurrences(of: "\\'", with: "'")
+        guard let correctData = correctedJSONFormatString.data(using: .utf8) else {
+            throw(FlickrAPIError.responseHandlingError(msg: "Could not re-encode "))
+        }
+        return correctData
     }
     
 }
